@@ -28,7 +28,9 @@ public class Topic_03_Xpath_Part1 {
 		driver.get("http://live.techpanda.org/index.php/customer/account/login/");
 		
 		// Click vào link My Account dưới footer
+		
 		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
+		
 		// Cơ chế của selenium: luôn thao tác với element đầu tiên nều có nhiều hơn 1 node
 		
 		

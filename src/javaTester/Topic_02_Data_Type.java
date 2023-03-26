@@ -16,21 +16,22 @@ public class Topic_02_Data_Type {
 		
 			// Số nguyên: Byte short Int Long (không có phần thập phân)
 				// Kích thước/ độ rộng để lưu dữ liệu từ nhỏ > lớn
-				byte bNumber=127;
-				short sNumber=32000;
-				int iNumber=499999;
-				long lNumber=999999000;
+				byte 	bNumber=127;
+				short 	sNumber=32000;
+				int 	iNumber=499999;
+				long 	lNumber=999999000;
 
 			// Số thực: float double (có phần thập phân)
-				float studentPoint=9.5f;
-				double employeeSalary=35.6d;
+				float 	studentPoint=9.5f;
+				double 	employeeSalary=35.6d;
 				
 			// Logic: boolean (true false)
-				boolean status=true; // Nam
-				status=false; // Nữ
+				boolean 
+						status=true; // Nam
+						status=false; // Nữ
 				
 			// Ký tự: char
-				char a='A';
+				char 	a='A';
 				
 		// Kiểu dữ liệu tham chiếu (Reference)
 			// Class
