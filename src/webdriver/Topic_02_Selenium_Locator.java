@@ -19,7 +19,7 @@ public class Topic_02_Selenium_Locator {
 		if (osName.contains("Windows")) {
 			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
 		} else {
-			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
+			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/MacDriver/geckodriver");
 		}
 
 		driver = new FirefoxDriver();
