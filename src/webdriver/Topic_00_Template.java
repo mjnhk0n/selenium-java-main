@@ -20,7 +20,7 @@ public class Topic_00_Template {
 		if (osName.contains("Windows")) {
 			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
 		} else {
-			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/MacDriver/geckodriver");
+			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
 		}
 		
 		driver = new FirefoxDriver();
