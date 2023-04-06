@@ -6,6 +6,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Navigation;
+import org.openqa.selenium.WebDriver.Options;
+import org.openqa.selenium.WebDriver.TargetLocator;
+import org.openqa.selenium.WebDriver.Timeouts;
+import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
@@ -87,23 +92,53 @@ public class Topic_05_Web_Browser {
 		// Lấy ID của tất cả window/ tab
 		Set<String> allIDs = driver.getWindowHandles();
 		
-	// 
+		// Cookie/ Cache
+		Options opt = driver.manage();
+		
+		// Login thành công -> lưu lại
+		opt.getCookies();
+		// Test case khác > Set cookie vào lại > không cần type lại ID để login
+		
+		opt.logs();
+		
+		Timeouts time = opt.timeouts();
+		
+		// Khoảng thời gian chờ element xuất hiện
+		time.implicitlyWait(5, TimeUnit.SECONDS);
+		time.implicitlyWait(5000, TimeUnit.MILLISECONDS);
+		time.implicitlyWait(5000000, TimeUnit.MICROSECONDS);
+		
+		// Khoảng thời gian chờ Page load
+		time.pageLoadTimeout(5, TimeUnit.SECONDS);
+		
+		// WebDriver API - JS executor (JavascriptExecutor library)
+		// Khoảng thời gian chờ script được thực thi xong
+		time.setScriptTimeout(5, TimeUnit.SECONDS);
 		
 		
-		
-		
-		
-		
-	}
+		Window win = opt.window();
+		// Test GUI: Font/ Size/ Color/ Position/ Location/ ...	
+		win.fullscreen();
+		win.maximize();
 
-	@Test
-	public void TC_02_() {
+		Navigation nav = driver.navigate();
+		
+		nav.back();
+		nav.forward();
+		nav.refresh();
+		
+		nav.to(""); // = với driver.get("");
+		
+		TargetLocator tar = driver.switchTo();
+		
+		// WebDriver API - Alert/ Authentication Alert (Alert library)
+		tar.alert();
+		// WebDriver API - Frame/ iFrame (Frame library)
+		tar.frame("");
+		// WebDriver API - tab/ window
+		tar.window("");	
 	}
-
-	@Test
-	public void TC_03_() {
-	}
-
+	
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
