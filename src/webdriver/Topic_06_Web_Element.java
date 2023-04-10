@@ -8,9 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 public class Topic_06_Web_Element {
 	WebDriver driver;
@@ -29,8 +27,7 @@ public class Topic_06_Web_Element {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
-	@Test
-	public void TC_01_WebElement() {
+	public void WebElement() {
 		// To interact with element, must find it through their locator
 		// By.id/ class/ name/ xpath/ css/ tagname/ linktext/ partiallinktext
 		driver.get("https://demo.nopcommerce.com/login?returnUrl=%2F");
@@ -104,17 +101,5 @@ public class Topic_06_Web_Element {
 			
 		
 	}
-
-	@Test
-	public void TC_02_() {
-	}
-
-	@Test
-	public void TC_03_() {
-	}
-
-	@AfterClass
-	public void afterClass() {
-		driver.quit();
-	}
+	
 }
