@@ -59,7 +59,7 @@ public class Topic_05_Web_Browser {
 		emailTextbox.clear();
 		emailTextbox.sendKeys("");
 		
-		// nếu không gán biến thì phải lặp lại đoạn code (harsh code) > code không clean - bad code
+		// nếu không gán biến thì phải lặp lại đoạn code (hard code) > code không clean - bad code
 		driver.findElement(By.xpath("//input[@id='Email']")).clear();
 		driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("");
 		

@@ -12,12 +12,15 @@ import org.testng.annotations.Test;
 
 public class Exercise_Topic06_Login {
 	WebDriver driver;
+	
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
-
+	
+	
 	By userNameTextbox = By.cssSelector("input[title='Email Address']");
 	By passwordTextbox = By.cssSelector("#pass");
 	By loginButton = By.cssSelector("#send2");
+	
 
 	@BeforeClass
 	public void beforeClass() {
@@ -55,7 +58,7 @@ public class Exercise_Topic06_Login {
 		driver.findElement(loginButton).click();
 
 		// Verify suggest message under User name
-		Assert.assertEquals(driver.findElement(By.cssSelector("#advice-validate-email-email")).getText(),"Please enter a valid email address. For example johndoe@domain.com.");
+		Assert.assertEquals(driver.findElement(By.cssSelector("#advice-validate-email-email")).getText(),"Please enter a valid email address. For example johndoe@domain.com.");	
 		
 		driver.findElement(userNameTextbox).clear();
 		driver.findElement(passwordTextbox).clear();
@@ -71,7 +74,7 @@ public class Exercise_Topic06_Login {
 
 		// Verify suggest message under password
 		Assert.assertEquals(driver.findElement(By.cssSelector("#advice-validate-password-pass")).getText(),"Please enter 6 or more characters without leading or trailing spaces.");
-		
+
 		driver.findElement(userNameTextbox).clear();
 		driver.findElement(passwordTextbox).clear();
 	}
@@ -82,7 +85,7 @@ public class Exercise_Topic06_Login {
 		// Login with incorrect Email/Password
 		driver.findElement(userNameTextbox).sendKeys("minhtn@automation.com");
 		driver.findElement(passwordTextbox).sendKeys("1234567");
-		sleepInSecond(1);
+		
 		driver.findElement(loginButton).click();
 		
 		// Verify error message for incorrect data
