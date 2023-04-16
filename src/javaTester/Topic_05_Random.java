@@ -13,5 +13,10 @@ public class Topic_05_Random {
 		Random rand = new Random();
 		rand.int(9999);
 	}
+	
+	public int getRandomNumber() {
+		Random rand = new Random();
+		return rand.nextInt(9999);
+	}
 
 }

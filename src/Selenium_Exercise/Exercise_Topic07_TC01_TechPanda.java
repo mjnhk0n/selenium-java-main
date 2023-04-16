@@ -10,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Exercise_Topic07_TC01_Textbox__TextArea {
+public class Exercise_Topic07_TC01_TechPanda {
 	WebDriver driver;
 	Random rand;
 	String projectPath = System.getProperty("user.dir");
