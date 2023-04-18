@@ -82,7 +82,8 @@ public class Topic_07_Handle_Default_Dropdown {
 
 		/*
 		 * Text Can be used if the item inside the dropdown is updated Ez to
-		 * manual test the value Must have the text for user to select
+		 * manual test the value 
+		 * Must have the text for user to select
 		 */
 
 		// Select by text
