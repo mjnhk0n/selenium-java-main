@@ -52,8 +52,9 @@ public class Topic_08_Handle_Custom_Dropdown {
 		explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("ul#speed-menu div[role='option']")));
 
 		/*
-		 * presence :: visible visible: only elements in visible range presence:
-		 * all elements appear in locator
+		 * presence :: visible 
+		 * visible: only elements in visible range 
+		 * presence: all elements appear in locator
 		 */
 
 		// Get all the items in dropdown into a list
@@ -93,8 +94,6 @@ public class Topic_08_Handle_Custom_Dropdown {
 
 		for (WebElement tempItems : speedDropdownItems) {
 			String itemText = tempItems.getText();
-			System.out.println(itemText);
-
 			if (itemText.equals("Faster")) {
 				tempItems.click();
 				break;
