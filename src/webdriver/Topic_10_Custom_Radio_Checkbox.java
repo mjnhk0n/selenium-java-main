@@ -68,12 +68,13 @@ public class Topic_10_Custom_Radio_Checkbox {
 		/*	Case 3	*/
 		// Use tag other than Input to click
 		// Use Input tag to verify
+		driver.get("https://tiemchungcovid19.gov.vn/portal/register-person");
 		
 		// Select
-		driver.findElement(By.xpath("//div[text()='Register for your relative']/preceding-sibling::div")).click();
+		driver.findElement(By.xpath("//div[text()='Đăng ký cho người thân']/preceding-sibling::div")).click();
 		
 		// Verify selected successfully
-		Assert.assertTrue(driver.findElement(By.xpath("//div[text()='Register for your relative']/preceding-sibling::div/input")).isSelected());
+		Assert.assertTrue(driver.findElement(By.xpath("//div[text()='Đăng ký cho người thân']/preceding-sibling::div/input")).isSelected());
 	}
 	
 	/* Above case can be used to demo/ basic 
@@ -89,7 +90,7 @@ public class Topic_10_Custom_Radio_Checkbox {
 		// Use click() method of JavaScript
 		// Selenium provide a library to embedded the JS code to test script -> JavascriptExecutor 
 		
-		By radioButton = By.xpath("//div[text()='Register for your relative']/preceding-sibling::div/input");
+		By radioButton = By.xpath("//div[text()='Đăng ký cho người thân']/preceding-sibling::div/input");
 		
 		// Select
 		jsExecutor.executeScript("arguments[0].click();", driver.findElement(radioButton));
@@ -104,8 +105,8 @@ public class Topic_10_Custom_Radio_Checkbox {
 		sleepInSecond(2);
 		
 		// Verify "Cần Thơ" button is not selected
-		By buttonCanTho = By.cssSelector("div[data-value='Cần Thơ']");
-		By checkboxQuangNgai = By.cssSelector("div[data-value='Quảng Ngãi']");
+		By buttonCanTho = By.cssSelector("div[aria-label='Cần Thơ']");
+		By checkboxQuangNgai = By.cssSelector("div[aria-label='Quảng Ngãi']");
 		Assert.assertEquals(driver.findElement(buttonCanTho).getAttribute("aria-checked"), "false");
 		
 		jsExecutor.executeScript("arguments[0].click();", driver.findElement(buttonCanTho));
@@ -115,8 +116,8 @@ public class Topic_10_Custom_Radio_Checkbox {
 		Assert.assertEquals(driver.findElement(checkboxQuangNgai).getAttribute("aria-checked"), "true");
 		
 		// Verify selected successfully (2)
-		Assert.assertTrue(driver.findElement(By.cssSelector("div[data-value='Cần Thơ'][aria-checked='true']")).isDisplayed());
-		Assert.assertTrue(driver.findElement(By.cssSelector("div[data-value='Quảng Ngãi'][aria-checked='true']")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.cssSelector("div[aria-label='Cần Thơ'][aria-checked='true']")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.cssSelector("div[aria-label='Quảng Ngãi'][aria-checked='true']")).isDisplayed());
 		
 		// This case is rare to meet
 		// Application of big tech site like Google/Facebook/... should not use Automation test on it ( should be automation register or other actions)
