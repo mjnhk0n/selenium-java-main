@@ -120,7 +120,7 @@ public class Topic_10_Custom_Radio_Checkbox {
 		Assert.assertTrue(driver.findElement(By.cssSelector("div[aria-label='Quảng Ngãi'][aria-checked='true']")).isDisplayed());
 		
 		// This case is rare to meet
-		// Application of big tech site like Google/Facebook/... should not use Automation test on it ( should be automation register or other actions)
+		// Application of big tech site like Google/Facebook/... should not use Automation to test ( should use automation to register or other actions)
 	}
 	
 	
