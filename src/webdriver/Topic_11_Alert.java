@@ -128,7 +128,6 @@ public class Topic_11_Alert {
 	@Test
 	public void TC_06_Authentication_Alert_AutoIT() {
 		
-		
 		driver.get("http://the-internet.herokuapp.com/basic_auth");
 		
 		// Using Auto IT only works with Windows
