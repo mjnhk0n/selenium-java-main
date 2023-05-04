@@ -36,7 +36,6 @@ public class Exercise_Topic07_TC03_Guru99_Bank {
 		
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		Actions act  = new Actions(driver);
 		
 		customerName = "MinhTN";
 		birthDate = "12311992";
