@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -44,7 +45,7 @@ public class Topic_12_Action_part3 {
 		driver.get("https://automationfc.github.io/basic-form/index.html");
 		
 		// Scroll to view the element
-		jsExecutor.executeScript("arguments[0].scrollIntoView(True);", driver.findElement(By.xpath("//button[text()='Double click me']")));
+		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[text()='Double click me']")));
 		sleepInSecond(1);
 		
 		act.doubleClick(driver.findElement(By.xpath("//button[text()='Double click me']"))).perform();
@@ -76,9 +77,21 @@ public class Topic_12_Action_part3 {
 	}
 	
 	@Test
-	public void TC_03_Drag_Drop() {
+	public void TC_03_Drag_Drop_HTML4() {
+		driver.get("https://automationfc.github.io/kendo-drag-drop/");
 		
+		WebElement smallCircle = driver.findElement(By.cssSelector("div#draggable"));
+		WebElement dropTarget = driver.findElement(By.cssSelector("div#droptarget"));
 		
+		act.dragAndDrop(smallCircle, dropTarget).perform();
+		
+		// Verify text
+		Assert.assertEquals(dropTarget.getText(), "You did great!");
+		
+		// Verify background color
+		String dropTargetBackgroundColor = dropTarget.getCssValue("background-color");
+		
+		Assert.assertEquals(Color.fromString(dropTargetBackgroundColor).asHex(), "#03a9f4");
 	}
 	
 	public void sleepInSecond(long timeInSecond) {
