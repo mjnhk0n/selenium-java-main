@@ -4,11 +4,14 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.SendKeysAction;
+import org.openqa.selenium.remote.server.handler.SendKeys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -21,6 +24,7 @@ public class Topic_17_Popup_Random_Part3 {
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
 	WebDriverWait explicitWait;
+	Actions act;
 
 	@BeforeClass
 	public void beforeClass() {
@@ -42,7 +46,8 @@ public class Topic_17_Popup_Random_Part3 {
 		options.addPreference("browser.cache.offline.enable", false);
 		options.addPreference("network.http.use-cache", false);
 		driver = new FirefoxDriver(options);
-		explicitWait = new WebDriverWait(driver, 60);
+		act = new Actions(driver);
+		explicitWait = new WebDriverWait(driver, 10);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
@@ -50,12 +55,12 @@ public class Topic_17_Popup_Random_Part3 {
 //	@Test
 	public void TC_01_Popup_Random_in_DOM() {
 		driver.get("https://www.javacodegeeks.com/");
-
+		sleepInSecond(30);
+		
 		By emailPopup = By.cssSelector("div.lepopup-popup-container>div:not([style^='display:none']");
 		
-		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(emailPopup));
 		String randomEmail = "minhtn" + randomNumber() + "@gmail.com";
-
+		
 		// Verify the popup's display
 		if (driver.findElement(emailPopup).isDisplayed()) {
 			// Input the email
@@ -88,9 +93,43 @@ public class Topic_17_Popup_Random_Part3 {
 
 	@Test
 	public void TC_02_Popup_Not_in_DOM_Facebook() {
+		driver.get("https://vnk.edu.vn/");
+		sleepInSecond(20);
+		
+		By vnkPopup = By.cssSelector("div.tve_flt");
+		
+		if (driver.findElement(vnkPopup).isDisplayed()) {
+			// Close popup
+			driver.findElement(By.cssSelector("svg.tcb-icon")).click();
+		}
+		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(vnkPopup));
+		
+		// Click Class register
+		driver.findElement(By.xpath("//button[text()='Danh sách khóa học']")).click();
+		
+		// Verify link has been changed
+		Assert.assertEquals(driver.getTitle(), "Lịch khai giảng các khóa học tại VNK EDU | VNK EDU");
+	}
+	
+	@Test
+	public void TC_03_Random_Popup_Not_in_DOM() {
+		driver.get("https://dehieu.vn/");
+		sleepInSecond(5);
+		
+		By dehieuPopup = By.cssSelector("div.popup-content");
+		
+		if (driver.findElements(dehieuPopup).size() > 0 && driver.findElements(dehieuPopup).get(0).isDisplayed()) {
+			driver.findElement(By.cssSelector("button#close-popup")).click();
+		}
+		
+		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(dehieuPopup));
+		
+		driver.findElement(By.xpath("//a[text()='Tất cả khóa học']")).click();
+		driver.findElement(By.cssSelector("input#search-courses")).sendKeys("Khóa học Thiết kế và Thi công Hệ thống BMS");
+		driver.findElement(By.cssSelector("span.input-group-btn")).click();
 		
 	}
-
+	
 	public void sleepInSecond(long timeInSecond) {
 		try {
 			Thread.sleep(timeInSecond * 1000);
