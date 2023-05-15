@@ -125,8 +125,17 @@ public class Topic_17_Popup_Random_Part3 {
 		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(dehieuPopup));
 		
 		driver.findElement(By.xpath("//a[text()='Tất cả khóa học']")).click();
-		driver.findElement(By.cssSelector("input#search-courses")).sendKeys("Khóa học Thiết kế và Thi công Hệ thống BMS");
+		
+		String courseName = "Khóa học Thiết kế và Thi công Hệ thống BMS";
+		
+		driver.findElement(By.id("search-courses")).sendKeys(courseName);
 		driver.findElement(By.cssSelector("span.input-group-btn")).click();
+		
+		// Verify only 1 link is displayed
+		Assert.assertEquals(driver.findElements(By.cssSelector("div.course-content")).size(), 1);
+		
+		// Verify the displayed course is correct
+		Assert.assertEquals(driver.findElement(By.cssSelector("div.course-content h4.name-course")).getText(), courseName);
 		
 	}
 	
