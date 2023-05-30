@@ -1,4 +1,4 @@
-package webdriver;
+package Selenium_Exercise;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -8,21 +8,21 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import javaTester.Topic_05_Random;
-
-public class Topic_20_JavaScript_Executor {
+public class Exercise_Topic20_JavaScript_Executor {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
 	WebDriverWait explicitWait;
 	JavascriptExecutor jsExecutor;
-	
+
 	@BeforeClass
 	public void beforeClass() {
 		if (osName.contains("Windows")) {
@@ -30,7 +30,7 @@ public class Topic_20_JavaScript_Executor {
 		} else {
 			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
 		}
-
+		
 		driver = new FirefoxDriver();
 		explicitWait = new WebDriverWait(driver, 15);
 		jsExecutor = (JavascriptExecutor) driver;
@@ -39,50 +39,44 @@ public class Topic_20_JavaScript_Executor {
 
 	@Test
 	public void TC_01_() {
-		jsExecutor.executeScript("window.location='http://live.techpanda.org/'");
-		sleepInSecond(10);
-
-		String domainPage = (String) jsExecutor.executeScript("return document.domain;");
-		Assert.assertEquals(domainPage, "live.techpanda.org");
-
-		String urlPage = (String) jsExecutor.executeScript("return document.URL;");
-		Assert.assertEquals(urlPage, "http://live.techpanda.org/");
-
-		WebElement mobileLink = driver.findElement(By.xpath("//a[text()='Mobile']"));
-		jsExecutor.executeScript("arguments[0].click();", mobileLink);
-		sleepInSecond(3);
-
-		WebElement addCartSamsung = driver.findElement(By.xpath(
-				"//a[@title='Samsung Galaxy']/parent::h2/following-sibling::div[@class='actions']//span[text()='Add to Cart']"));
-		jsExecutor.executeScript("arguments[0].click();", addCartSamsung);
+		executeForBrowser("window.location='https://automationfc.github.io/html5/index.html'");
 		sleepInSecond(5);
 
-		String successText = jsExecutor.executeScript("return document.documentElement.innerText;").toString();
-		Assert.assertTrue(successText.contains("Samsung Galaxy was added to your shopping cart"));
+		// Click submit and verify displayed message
+		clickToElementByJS("//input[@name='submit-btn']");
+		Assert.assertEquals(getElementValidationMessage("//input[@type='name']"), "Please fill out this field");
 
-		WebElement customerService = driver.findElement(By.xpath("//a[text()='Customer Service']"));
-		jsExecutor.executeScript("arguments[0].click();", customerService);
-		sleepInSecond(5);
+		// Fill data in Name textbox, click Submit and verify message of password
+		// textbox
+		sendkeyToElementByJS("//input[@type='name']", "MinhTN");
+		clickToElementByJS("//input[@name='submit-btn']");
+		Assert.assertEquals(getElementValidationMessage("//input[@type='password']"), "Please fill out this field");
 
-		String titlePage = jsExecutor.executeScript("return document.title;").toString();
-		Assert.assertEquals(titlePage, "Customer Service");
+		// Fill data in Password textbox, click submit and verify message of Email
+		// textbox
+		sendkeyToElementByJS("//input[@type='password']", "123456");
+		clickToElementByJS("//input[@name='submit-btn']");
+		Assert.assertEquals(getElementValidationMessage("//input[@type='email']"), "Please fill out this field");
+
+		// Fill in INVALID data (no @) in Email textbox, click submit and verify message
+		// of Email textbox
+		sendkeyToElementByJS("//input[@type='email']", "2134sA2.abc");
+		clickToElementByJS("//input[@name='submit-btn']");
+		Assert.assertTrue(getElementValidationMessage("//input[@type='email']")
+				.contains("Please include an '@' in the email address"));
+
+		// Fill in INVALID data (with @ and no .) in Email textbox, click submit and verify message
+		// of Email textbox
+		sendkeyToElementByJS("//input[@type='email']", "2134@abc");
+		clickToElementByJS("//input[@name='submit-btn']");
+		Assert.assertTrue(getElementValidationMessage("//input[@type='email']")
+				.contains("Please match with requested format"));
 		
-		WebElement emailToSubcribe = getElement("//input[@id='newsletter']");
-		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", emailToSubcribe);
-		String emailRandom = "affc" + getRandomNumber() + "@gmail.com";
-		sleepInSecond(5);
-		jsExecutor.executeScript("arguments[0].setAttribute('value','" + emailRandom + "')", getElement("//input[@id='newsletter']"));
-		
-		
-		clickToElementByJS("//span[text()='Subscribe']");
-		sleepInSecond(5);
-		
-		expectedTextInInnerText("Thank you for your subscription.");
-		
-		jsExecutor.executeScript("window.location='https://demo.guru99.com/v4/'");
-		sleepInSecond(5);
-		String targetPageDomain = (String) jsExecutor.executeScript("return document.domain");
-		Assert.assertEquals(targetPageDomain,"demo.guru99.com");
+		// Fill in valid email data, click submit and verify message of Address
+		sendkeyToElementByJS("//input[@type='email']", "2134@abc.123");
+		clickToElementByJS("//input[@name='submit-btn']");
+		Assert.assertTrue(getElementValidationMessage("//li//select")
+				.contains("Please select an item in the list"));
 	}
 
 	public Object executeForBrowser(String javaScript) {
@@ -167,7 +161,7 @@ public class Topic_20_JavaScript_Executor {
 		Random rand = new Random();
 		return rand.nextInt(9999);
 	}
-	
+
 	public void sleepInSecond(long timeInSecond) {
 		try {
 			Thread.sleep(timeInSecond * 1000);
@@ -177,7 +171,7 @@ public class Topic_20_JavaScript_Executor {
 		// 1000ms = 1s
 	}
 
-	@AfterClass
+//	@AfterClass
 	public void afterClass() {
 		driver.quit();
 	}
