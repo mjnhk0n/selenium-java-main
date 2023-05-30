@@ -38,45 +38,51 @@ public class Exercise_Topic20_JavaScript_Executor {
 	}
 
 	@Test
-	public void TC_01_() {
+	public void TC_01_automationfc() {
 		executeForBrowser("window.location='https://automationfc.github.io/html5/index.html'");
 		sleepInSecond(5);
-
+		String submitButton = "//input[@name='submit-btn']";
+		String fullNameTextBox = "//input[@type='name']";
+		String passwordTextBox = "//input[@type='password']";
+		String emailTextBox = "//input[@type='email']";
+		
 		// Click submit and verify displayed message
-		clickToElementByJS("//input[@name='submit-btn']");
-		Assert.assertEquals(getElementValidationMessage("//input[@type='name']"), "Please fill out this field");
+		clickToElementByJS(submitButton);
+		Assert.assertEquals(getElementValidationMessage("//input[@type='name']"), "Please fill out this field.");
 
 		// Fill data in Name textbox, click Submit and verify message of password
 		// textbox
-		sendkeyToElementByJS("//input[@type='name']", "MinhTN");
-		clickToElementByJS("//input[@name='submit-btn']");
-		Assert.assertEquals(getElementValidationMessage("//input[@type='password']"), "Please fill out this field");
+		sendkeyToElementByJS(fullNameTextBox, "MinhTN");
+		clickToElementByJS(submitButton);
+		Assert.assertEquals(getElementValidationMessage(passwordTextBox), "Please fill out this field.");
 
 		// Fill data in Password textbox, click submit and verify message of Email
 		// textbox
-		sendkeyToElementByJS("//input[@type='password']", "123456");
-		clickToElementByJS("//input[@name='submit-btn']");
-		Assert.assertEquals(getElementValidationMessage("//input[@type='email']"), "Please fill out this field");
+		sendkeyToElementByJS(passwordTextBox, "123456");
+		clickToElementByJS(submitButton);
+		Assert.assertEquals(getElementValidationMessage("//input[@type='email']"), "Please fill out this field.");
 
 		// Fill in INVALID data (no @) in Email textbox, click submit and verify message
 		// of Email textbox
-		sendkeyToElementByJS("//input[@type='email']", "2134sA2.abc");
-		clickToElementByJS("//input[@name='submit-btn']");
-		Assert.assertTrue(getElementValidationMessage("//input[@type='email']")
-				.contains("Please include an '@' in the email address"));
-
+		sendkeyToElementByJS(emailTextBox, "2134sA2.abc");
+		clickToElementByJS(submitButton);
+		sleepInSecond(3);
+		Assert.assertTrue(getElementValidationMessage(emailTextBox)
+				.contains("Please enter an email address."));
+		
 		// Fill in INVALID data (with @ and no .) in Email textbox, click submit and verify message
 		// of Email textbox
-		sendkeyToElementByJS("//input[@type='email']", "2134@abc");
-		clickToElementByJS("//input[@name='submit-btn']");
-		Assert.assertTrue(getElementValidationMessage("//input[@type='email']")
-				.contains("Please match with requested format"));
+		sendkeyToElementByJS(emailTextBox, "2134@abc");
+		clickToElementByJS(submitButton);
+		sleepInSecond(3);
+		Assert.assertTrue(getElementValidationMessage(emailTextBox)
+				.contains("Please match the requested format."));
 		
 		// Fill in valid email data, click submit and verify message of Address
-		sendkeyToElementByJS("//input[@type='email']", "2134@abc.123");
-		clickToElementByJS("//input[@name='submit-btn']");
+		sendkeyToElementByJS(emailTextBox, "2134@abc.123");
+		clickToElementByJS(submitButton);
 		Assert.assertTrue(getElementValidationMessage("//li//select")
-				.contains("Please select an item in the list"));
+				.contains("Please select an item in the list."));
 	}
 
 	public Object executeForBrowser(String javaScript) {
@@ -146,12 +152,6 @@ public class Exercise_Topic20_JavaScript_Executor {
 		return (String) jsExecutor.executeScript("return arguments[0].validationMessage;", getElement(locator));
 	}
 
-	public boolean isImageLoaded(String locator) {
-		boolean status = (boolean) jsExecutor.executeScript(
-				"return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0",
-				getElement(locator));
-		return status;
-	}
 
 	public WebElement getElement(String locator) {
 		return driver.findElement(By.xpath(locator));

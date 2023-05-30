@@ -152,12 +152,6 @@ public class Topic_20_JavaScript_Executor {
 		return (String) jsExecutor.executeScript("return arguments[0].validationMessage;", getElement(locator));
 	}
 
-	public boolean isImageLoaded(String locator) {
-		boolean status = (boolean) jsExecutor.executeScript(
-				"return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0",
-				getElement(locator));
-		return status;
-	}
 
 	public WebElement getElement(String locator) {
 		return driver.findElement(By.xpath(locator));
