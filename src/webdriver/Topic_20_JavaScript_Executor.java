@@ -22,7 +22,7 @@ public class Topic_20_JavaScript_Executor {
 	String osName = System.getProperty("os.name");
 	WebDriverWait explicitWait;
 	JavascriptExecutor jsExecutor;
-	
+
 	@BeforeClass
 	public void beforeClass() {
 		if (osName.contains("Windows")) {
@@ -52,8 +52,7 @@ public class Topic_20_JavaScript_Executor {
 		jsExecutor.executeScript("arguments[0].click();", mobileLink);
 		sleepInSecond(3);
 
-		WebElement addCartSamsung = driver.findElement(By.xpath(
-				"//a[@title='Samsung Galaxy']/parent::h2/following-sibling::div[@class='actions']//span[text()='Add to Cart']"));
+		WebElement addCartSamsung = driver.findElement(By.xpath("//a[@title='Samsung Galaxy']/parent::h2/following-sibling::div[@class='actions']//span[text()='Add to Cart']"));
 		jsExecutor.executeScript("arguments[0].click();", addCartSamsung);
 		sleepInSecond(5);
 
@@ -66,23 +65,22 @@ public class Topic_20_JavaScript_Executor {
 
 		String titlePage = jsExecutor.executeScript("return document.title;").toString();
 		Assert.assertEquals(titlePage, "Customer Service");
-		
+
 		WebElement emailToSubcribe = getElement("//input[@id='newsletter']");
 		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", emailToSubcribe);
 		String emailRandom = "affc" + getRandomNumber() + "@gmail.com";
 		sleepInSecond(5);
 		jsExecutor.executeScript("arguments[0].setAttribute('value','" + emailRandom + "')", getElement("//input[@id='newsletter']"));
-		
-		
+
 		clickToElementByJS("//span[text()='Subscribe']");
 		sleepInSecond(5);
-		
+
 		expectedTextInInnerText("Thank you for your subscription.");
-		
+
 		jsExecutor.executeScript("window.location='https://demo.guru99.com/v4/'");
 		sleepInSecond(5);
 		String targetPageDomain = (String) jsExecutor.executeScript("return document.domain");
-		Assert.assertEquals(targetPageDomain,"demo.guru99.com");
+		Assert.assertEquals(targetPageDomain, "demo.guru99.com");
 	}
 
 	public Object executeForBrowser(String javaScript) {
@@ -94,8 +92,7 @@ public class Topic_20_JavaScript_Executor {
 	}
 
 	public boolean expectedTextInInnerText(String textExpected) {
-		String textActual = (String) jsExecutor
-				.executeScript("return document.documentElement.innerText.match('" + textExpected + "')[0];");
+		String textActual = (String) jsExecutor.executeScript("return document.documentElement.innerText.match('" + textExpected + "')[0];");
 		return textActual.equals(textExpected);
 	}
 
@@ -111,8 +108,7 @@ public class Topic_20_JavaScript_Executor {
 	public void hightlightElement(String locator) {
 		WebElement element = getElement(locator);
 		String originalStyle = element.getAttribute("style");
-		jsExecutor.executeScript("arguments[0].setAttribute('style', arguments[1])", element,
-				"border: 2px solid red; border-style: dashed;");
+		jsExecutor.executeScript("arguments[0].setAttribute('style', arguments[1])", element, "border: 2px solid red; border-style: dashed;");
 		sleepInSecond(2);
 		jsExecutor.executeScript("arguments[0].setAttribute('style', arguments[1])", element, originalStyle);
 	}
@@ -131,8 +127,7 @@ public class Topic_20_JavaScript_Executor {
 	}
 
 	public void setAttributeInDOM(String locator, String attributeName, String attributeValue) {
-		jsExecutor.executeScript("arguments[0].setAttribute('" + attributeName + "', '" + attributeValue + "');",
-				getElement(locator));
+		jsExecutor.executeScript("arguments[0].setAttribute('" + attributeName + "', '" + attributeValue + "');", getElement(locator));
 	}
 
 	public void removeAttributeInDOM(String locator, String attributeRemove) {
@@ -144,24 +139,27 @@ public class Topic_20_JavaScript_Executor {
 	}
 
 	public String getAttributeInDOM(String locator, String attributeName) {
-		return (String) jsExecutor.executeScript("return arguments[0].getAttribute('" + attributeName + "');",
-				getElement(locator));
+		return (String) jsExecutor.executeScript("return arguments[0].getAttribute('" + attributeName + "');", getElement(locator));
 	}
 
 	public String getElementValidationMessage(String locator) {
 		return (String) jsExecutor.executeScript("return arguments[0].validationMessage;", getElement(locator));
 	}
 
-
 	public WebElement getElement(String locator) {
 		return driver.findElement(By.xpath(locator));
+	}
+
+	public boolean isImageLoaded(String locator) {
+		boolean status = (Boolean) jsExecutor.executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0", getElement(locator));
+		return status;
 	}
 
 	public int getRandomNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);
 	}
-	
+
 	public void sleepInSecond(long timeInSecond) {
 		try {
 			Thread.sleep(timeInSecond * 1000);
