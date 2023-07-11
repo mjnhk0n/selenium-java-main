@@ -13,7 +13,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Exercise_Topic23_Wait_Element_Status {
+public class Exercise_Topic23_Static_Wait {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
@@ -28,33 +28,25 @@ public class Exercise_Topic23_Wait_Element_Status {
 		}
 		
 		driver = new FirefoxDriver();
-		explicitWait = new WebDriverWait(driver, 15);
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
 	@Test
-	public void TC_01_Implicit_Wait() {
+	public void TC_01_Not_Enough_Time() {
 		driver.get("https://automationfc.github.io/dynamic-loading/");
+		driver.findElement(By.cssSelector("div#start>button")).click();
+		sleepInSecond(2);
 		
-		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-		driver.findElement(By.xpath("//button[text()='Start']")).click();
-		
-		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-		Assert.assertEquals(driver.findElement(By.xpath("//h4[text()='Hello World!']")).getText(), "Hello World!");
+		Assert.assertTrue(driver.findElement(By.cssSelector("div#finish>h4")).isDisplayed());
 	}
 	
 	@Test
-	public void TC_02_Static_Wait() {
+	public void TC_02_Enough_Time() {
 		driver.get("https://automationfc.github.io/dynamic-loading/");
-		
-		driver.findElement(By.xpath("//button[text()='Start']")).click();
+		driver.findElement(By.cssSelector("div#start>button")).click();
 		sleepInSecond(5);
-		
-		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[text()='Hello World!']")));
-		Assert.assertEquals(driver.findElement(By.xpath("//h4[text()='Hello World!']")).getText(), "Hello World!");
+		Assert.assertTrue(driver.findElement(By.cssSelector("div#finish>h4")).isDisplayed());
 	}
-
-
+	
 	
 	public void sleepInSecond(long timeInSecond) {
 		try {
@@ -62,9 +54,10 @@ public class Exercise_Topic23_Wait_Element_Status {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		// 1000ms = 1s 
+		// 1000ms = 1s
 	}
-	
+
+
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
