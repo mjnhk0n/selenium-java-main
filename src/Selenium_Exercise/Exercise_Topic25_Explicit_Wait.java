@@ -36,9 +36,8 @@ public class Exercise_Topic25_Explicit_Wait {
 		explicitWait = new WebDriverWait(driver, 15);
 		jsExecutor = (JavascriptExecutor) driver;
 	}
-	
-	
-//	@Test
+
+	@Test
 	public void TC_01_Ajax_Loading() {
 		driver.get("https://demos.telerik.com/aspnet-ajax/ajaxloadingpanel/functionality/explicit-show-hide/defaultcs.aspx");
 
@@ -73,36 +72,53 @@ public class Exercise_Topic25_Explicit_Wait {
 	@Test
 	public void TC_02_ExplicitWait_Gofile() {
 		String imageBird = "imageBird.jpg";
-		String imageOtter = "imageBird.jpg";
+		String imageOtter = "imageOtter.jpg";
 		String imageTiger = "imageTiger.jpg";
-		
+
 		String uploadFileFolder = projectPath + File.separator + "uploadFiles" + File.separator;
-		
+
 		String imageBirdPath = uploadFileFolder + imageBird;
 		String imageOtterPath = uploadFileFolder + imageOtter;
 		String imageTigerPath = uploadFileFolder + imageTiger;
-		
+
 		driver.get("https://gofile.io/uploadFiles");
-		
+
 		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Add files']")));
-		
+
 		driver.findElement(By.cssSelector("input[type='file']")).sendKeys(imageBirdPath + "\n" + imageOtterPath + "\n" + imageTigerPath);
+
+		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.mainUploadFilesListDetails")));
+
+		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.text-center div.border-success")));
+
+		Assert.assertTrue(driver.findElement(By.cssSelector("div.mainUploadSuccess div.alert")).isDisplayed());
+
+		explicitWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.mainUploadSuccessLink a.ajaxLink"))).click();
 		
-		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("span.mainUploadInitInfoText")));
+		// Verify download button is displayed
+		Assert.assertTrue(
+				explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" + imageBird + "']/parent::a/parent::div/following-sibling::div//span[text()='Download']")))
+						.isDisplayed());
+		Assert.assertTrue(
+				explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" + imageOtter + "']/parent::a/parent::div/following-sibling::div//span[text()='Download']")))
+						.isDisplayed());
+		Assert.assertTrue(
+				explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" + imageTiger + "']/parent::a/parent::div/following-sibling::div//span[text()='Download']")))
+						.isDisplayed());
 		
-		Assert.assertEquals(driver.findElement(By.cssSelector("div.text-center div.border-success")).getText(), "Your files have been successfully uploaded");
-		
-		explicitWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.mainUploadSuccessLink a.ajaxLink")));
-		driver.findElement(By.cssSelector("div.mainUploadSuccessLink a.ajaxLink")).click();
-		
-		explicitWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("span.contentName")));
-		
-		Assert.assertEquals(false, false);
-//		List<WebElement> uploadFolders = driver.findElements(By.cssSelector("button.filesContentOptionDownload span"));
+		// Verify Play button is displayed
+		Assert.assertTrue(
+				explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" + imageBird + "']/parent::a/parent::div/following-sibling::div//span[text()='Play']")))
+						.isDisplayed());
+		Assert.assertTrue(
+				explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" + imageBird + "']/parent::a/parent::div/following-sibling::div//span[text()='Play']")))
+						.isDisplayed());
+		Assert.assertTrue(
+				explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" + imageBird + "']/parent::a/parent::div/following-sibling::div//span[text()='Play']")))
+						.isDisplayed());
 	}
-	
-	
-//	@AfterClass
+
+	// @AfterClass
 	public void afterClass() {
 		driver.quit();
 	}
