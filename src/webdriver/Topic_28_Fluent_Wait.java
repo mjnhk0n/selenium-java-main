@@ -71,9 +71,11 @@ public class Topic_28_Fluent_Wait {
 		Assert.assertEquals(findElement("//div[@id='finish']/h4").getText(), "Hello World!");
 	}
 
-	public WebElement findElement(final String xpathLocator) {
+	public WebElement findElement(String xpathLocator) {
 		fluentDriver = new FluentWait<WebDriver>(driver);
-		fluentDriver.withTimeout(Duration.ofSeconds(totalTime)).pollingEvery(Duration.ofMillis(intervalTime)).ignoring(NoSuchElementException.class);
+		fluentDriver.withTimeout(Duration.ofSeconds(totalTime))
+			.pollingEvery(Duration.ofMillis(intervalTime))
+				.ignoring(NoSuchElementException.class);
 		return fluentDriver.until(new Function<WebDriver, WebElement>() {
 			public WebElement apply(WebDriver driver) {
 				return driver.findElement(By.xpath(xpathLocator));
