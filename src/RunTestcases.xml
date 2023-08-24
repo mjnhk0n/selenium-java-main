@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel="false" name="Suite">
-  <test name="Test">
-    <classes>
-      <class name="testNG.Topic_01_Annotations"/>
-    </classes>
-  </test>
+	<test name="Tiki Web">
+		<groups>
+			<run>
+				<include name="Cart" />
+			</run>
+		</groups>
+		
+		<package>
+			<package name = "tiki.admin" />
+		</package>
+		
+		<classes>
+			<class name = ""/>
+		</classes>
+	</test>
 </suite>
+
