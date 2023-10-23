@@ -38,6 +38,8 @@ public class Exercise_Topic28_Fluent_Wait {
 
 	@Test
 	public void TC_01_Fluent_Wait() {
+		// Use for some cases like count-down time
+		// Use for cases that can not use Explicit and Implicit Wait
 		driver.get("https://automationfc.github.io/fluent-wait/");
 		
 		WebElement cdTimer = driver.findElement(By.xpath("//div[@id='javascript_countdown_time']"));

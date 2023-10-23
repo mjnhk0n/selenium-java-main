@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite parallel="false" name="Suite">
-	<test name="Tiki Web">
+<suite parallel="false" name="Suite" thread-count="2">
+	<!-- Do not use in 1 device for the thread-count-->
+<!--	<test name="Tiki Web">
 		<groups>
 			<run>
 				<include name="Cart" />
@@ -9,11 +10,23 @@
 		
 		<package>
 			<package name = "tiki.admin" />
-		</package>
+		</package>-->
 		
-		<classes>
-			<class name = ""/>
-		</classes>
+	<!--<global>-->
+	<parameter name = "environment" value = "live"/>
+	<test name="Run on FireFox">
+		<!--Local-->
+		<parameter name = "browser" value = "FireFox"/>	
+			<classes>
+				<class name = "testNG.Topic_06_Parameter_Multi_Environment"/>
+			</classes>
+	</test>
+	
+	<test name="Run on Chrome">
+		<parameter name = "browser" value = "Chrome"/>	
+			<classes>
+				<class name = "testNG.Topic_06_Parameter_Multi_Environment"/>
+			</classes>
 	</test>
 </suite>
 
