@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel="false" name="Suite" thread-count="2">
 	<!-- Do not use in 1 device for the thread-count-->
-<!--	<test name="Tiki Web">
+	<!--<test name="Tiki Web">
 		<groups>
 			<run>
 				<include name="Cart" />
