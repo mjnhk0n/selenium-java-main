@@ -16,7 +16,7 @@ public class Topic_01_Data_Type {
 	}
 	
 	
-	// Getter
+	// Getter: getCurrentUrl/ getTitle/...
 	public String getStudentName() {
 		return this.studentName;
 	}
