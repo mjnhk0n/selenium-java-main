@@ -50,7 +50,7 @@ public class Topic_02_Data_Type {
 			String[] studentName = {"Nguyen Van A", "Hoang Thi B"};
 			
 			// Collection: List/ Set/ Queue
-			List<WebElement> checkboxes = driver.findElement(By.cssSelector(""));
+			List<WebElement> checkboxes = driver.findElements(By.cssSelector(""));
 			
 			// Map
 			Map<String , Interger> student = new HashMap<String, Interger>;
