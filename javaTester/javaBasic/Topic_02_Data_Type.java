@@ -38,8 +38,8 @@ public class Topic_02_Data_Type {
 	
 	// Collection
 	// List/ Set/ Queue/ Map
-	List<WebElement> homePageLinks = driver.findElement(By.tagName("a"));
-	Set<String> allWindows = driver.getWindowHandle();
+	List<WebElement> homePageLinks = driver.findElements(By.tagName("a"));
+	Set<String> allWindows = driver.getWindowHandles();
 	List<String> productName = new ArrayList<String>();
 	
 	public void clickToElement() {
