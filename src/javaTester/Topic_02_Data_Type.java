@@ -19,7 +19,7 @@ public class Topic_02_Data_Type {
 				byte 	bNumber=127;
 				short 	sNumber=32000;
 				int 	iNumber=499999;
-				long 	lNumber=999999000;
+				long 	lNumber=99999900;
 
 			// Số thực: float double (có phần thập phân)
 				float 	studentPoint=9.5f;
@@ -53,7 +53,7 @@ public class Topic_02_Data_Type {
 			List<WebElement> checkboxes = driver.findElements(By.cssSelector(""));
 			
 			// Map
-			Map<String , Interger> student = new HashMap<String, Interger>;
+			Map<String , Interger> students = new HashMap<String, Interger>;
 			
 			
 			
