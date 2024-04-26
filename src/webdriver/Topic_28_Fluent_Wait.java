@@ -36,7 +36,7 @@ public class Topic_28_Fluent_Wait {
 		driver = new FirefoxDriver();
 	}
 
-//	@Test
+	@Test
 	public void TC_01_Fluent_Wait() {
 		driver.get("https://automationfc.github.io/dynamic-loading/");
 

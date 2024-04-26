@@ -56,10 +56,7 @@ public class Exercise_Topic28_Fluent_Wait {
 				return text.endsWith("00");
 			}
 		});
-		
 	}
-
-
 
 	@AfterClass
 	public void afterClass() {
