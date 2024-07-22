@@ -5,7 +5,7 @@ public class Topic_01_Variable {
 	static boolean studentStatus;
 	
 	// Final variable is not allow to override
-	static final String browserName = "Chrome";
+	static final String BROWSER_NAME = "Chrome"; // constant - hằng số, không được thay đổi
 	
 	String studentName = "AFC";
 	
