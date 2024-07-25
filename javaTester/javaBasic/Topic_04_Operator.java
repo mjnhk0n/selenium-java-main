@@ -11,6 +11,8 @@ public class Topic_04_Operator {
 	String name = "Automation Testing";
 	Boolean value = false;
 	
+	
+	
 	System.out.println("Time = " + time);
 	System.out.println("Name = " + name);
 	System.out.println("Value = " + value);
