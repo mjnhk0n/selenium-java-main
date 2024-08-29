@@ -1,4 +1,4 @@
-package javaBasic;
+package java_basic;
 
 public class Topic_01_Variable {
 	static int studentNumber;

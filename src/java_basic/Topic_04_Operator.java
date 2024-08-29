@@ -1,8 +1,10 @@
-package javaBasic;
+package java_basic;
 
 import org.testng.annotations.Test;
 
 public class Topic_04_Operator {
+	
+	
 	
 	@Test 
 	public void TC_01 () {
@@ -64,6 +66,8 @@ public class Topic_04_Operator {
 		System.out.println("Second variable = " + secondVariable);
 		System.out.println("Third variable = " + result);
 		
+		for (int i = 0; i <= 3, i++);
+				System.out.println(i);
 	}
 
 }

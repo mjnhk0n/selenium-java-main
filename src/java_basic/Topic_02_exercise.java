@@ -1,4 +1,4 @@
-package javaBasic;
+package java_basic;
 
 import org.testng.annotations.Test;
 public class Topic_02_exercise {
