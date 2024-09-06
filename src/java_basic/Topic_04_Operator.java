@@ -1,13 +1,6 @@
 package java_basic;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 
 public class Topic_04_Operator {
 	int number = 10;
@@ -60,8 +53,14 @@ public class Topic_04_Operator {
 		System.out.println(++number);
 		System.out.println(number++);
 		
-		for (int i = 0; i < 3; ++i);
+		for (int i = 0; i < 3; ++i){
 		System.out.println(i);
 	}
-		
+	
+	String address = "Sai Gon";
+	
+	if (address != "Ha Noi" && address != "Da Nang") {
+		System.out.println("Address is different");
+		}
+	}
 }
