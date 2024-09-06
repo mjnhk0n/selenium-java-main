@@ -1,10 +1,16 @@
 package java_basic;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+
 public class Topic_04_Operator {
-	
-	
+	int number = 10;
 	
 	@Test 
 	public void TC_01 () {
@@ -49,25 +55,13 @@ public class Topic_04_Operator {
 	}
 	
 	@Test
-	public static void TC_03(String[] args){
+	public static void main(String[] args){
 		int number = 10;
-		
-		System.out.println(number++);
-		// Print number first (10), then increase number by 1 = 11
-		
 		System.out.println(++number);
-		// Increase number by 1 first ( number above = 11 > number = 12), then print
+		System.out.println(number++);
 		
-	// ++ in prefix and postfix
-		int firstVariable = 5, secondVariable = 7;
-		int result = firstVariable++ + ++secondVariable - 8;
-		
-		System.out.println("First variable = " + firstVariable);
-		System.out.println("Second variable = " + secondVariable);
-		System.out.println("Third variable = " + result);
-		
-		for (int i = 0; i <= 3, i++);
-				System.out.println(i);
+		for (int i = 0; i < 3; ++i);
+		System.out.println(i);
 	}
-
+		
 }
