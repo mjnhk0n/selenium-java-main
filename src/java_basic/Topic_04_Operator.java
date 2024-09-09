@@ -1,5 +1,6 @@
 package java_basic;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Topic_04_Operator {
@@ -62,5 +63,8 @@ public class Topic_04_Operator {
 	if (address != "Ha Noi" && address != "Da Nang") {
 		System.out.println("Address is different");
 		}
+	boolean status = (address == "Sai Gon") ? true : false;
+		System.out.println(status);
+	
 	}
 }
