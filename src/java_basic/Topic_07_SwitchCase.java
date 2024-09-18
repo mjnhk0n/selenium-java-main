@@ -13,8 +13,10 @@ public class Topic_07_SwitchCase {
 	@Test
 	public void TC_01 () {
 		int month = scanner.nextInt();
-		
 		switch (month) {
+		// enum variable = constant
+		// Only permit for int/string/enum
+		// Do not use with: = < > != ==
 		case 1:
 		case 3:
 		case 5:
