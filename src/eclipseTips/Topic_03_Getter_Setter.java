@@ -1,6 +1,6 @@
-package java_basic;
+package eclipseTips;
 
-public class Topic_10_Getter_Setter {
+public class Topic_03_Getter_Setter {
 	private String carName;
 	private String careMachine;
 	private String carColor;
@@ -58,7 +58,7 @@ public class Topic_10_Getter_Setter {
 	}
 	
 	public static void main(String[] args) {
-		Topic_10_Getter_Setter topic_10 = new Topic_10_Getter_Setter();
+		Topic_03_Getter_Setter topic_03 = new Topic_03_Getter_Setter();
 		
 	}
 	
