@@ -16,7 +16,7 @@ public class Topic_10_Break_Continue {
 			System.out.println("i = " + i);
 			
 			
-			// Each run of For loop above will apply for all runs of For under
+			// Each run of For loop above will apply for all runs of For below
 			for (int j = 1; j <= 5; j++) {
 				if (j == 4) {
 					continue;
@@ -30,6 +30,8 @@ public class Topic_10_Break_Continue {
 	public static void TC_01() {
 		String[] month = {"JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
 		int i = scanner.nextInt();
+		String j = scanner.nextLine();
+		
 		
 		}
 }
