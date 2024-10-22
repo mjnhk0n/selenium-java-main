@@ -89,9 +89,9 @@ public class Topic_12_String {
 		// Dynamic locator
 		// %s: represent for a string
 		String dynamicButtonXpath = "//button[@id='%s']";
-		System.out.println("click login button" + dynamicButtonXpath.format(dynamicButtonXpath, "login"));
-		System.out.println("click Search button" + dynamicButtonXpath.format(dynamicButtonXpath, "search"));
-		System.out.println("click Register button" + dynamicButtonXpath.format(dynamicButtonXpath, "register"));
+		System.out.println("click login button" + String.format(dynamicButtonXpath, "login"));
+		System.out.println("click Search button" + String.format(dynamicButtonXpath, "search"));
+		System.out.println("click Register button" + String.format(dynamicButtonXpath, "register"));
 		
 	}
 
