@@ -42,7 +42,7 @@ public class Topic_11_Array {
 			System.out.println("Age" + age);
 		}
 		
-		public static void main(String[] agrs) {
+		public void main(String[] agrs) {
 			Student[] students = new Student[3];
 			students[0] = new Student(null, 0);
 			students[1] = new Student("Long", 24);

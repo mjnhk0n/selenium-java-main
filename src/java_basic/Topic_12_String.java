@@ -1,5 +1,6 @@
 package java_basic;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -68,6 +69,30 @@ public class Topic_12_String {
 		
 		String driverInstanceName = driver.toString();
 		System.out.println(driverInstanceName);
+		
+		if (osName.toLowerCase().contains("windows")) {
+			Keys key = Keys.CONTROL;
+		} else {
+			Keys key = Keys.COMMAND;
+		}
+		
+		// Close browser/ driver
+		if (driverInstanceName.contains("internetexplorer")) {
+			// Fixed sleep 5s after switch page event
+		}
+		
+		// Trim: Get rid of blank/ tab at the start or end of the string
+		String helloWorld = "	\n \t Hello World 	";
+		
+		System.out.println(helloWorld.trim());
+		
+		// Dynamic locator
+		// %s: represent for a string
+		String dynamicButtonXpath = "//button[@id='%s']";
+		System.out.println("click login button" + dynamicButtonXpath.format(dynamicButtonXpath, "login"));
+		System.out.println("click Search button" + dynamicButtonXpath.format(dynamicButtonXpath, "search"));
+		System.out.println("click Register button" + dynamicButtonXpath.format(dynamicButtonXpath, "register"));
+		
 	}
 
 }
