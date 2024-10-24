@@ -3,7 +3,7 @@ package java_basic;
 import java.util.ArrayList;
 
 public class Topic_11_Array {
-	public static void main(String[] agrs) {
+	public static void main(String[] args) {
 		// Fixed element when compile code
 		String studentName[] = { "Nam", "Long", "An" };
 
@@ -41,13 +41,13 @@ public class Topic_11_Array {
 			System.out.println("Name" + name);
 			System.out.println("Age" + age);
 		}
-		
+
 		public void main(String[] agrs) {
 			Student[] students = new Student[3];
 			students[0] = new Student(null, 0);
 			students[1] = new Student("Long", 24);
 			students[2] = new Student("Minh", 24);
-			
+
 			for (int i = 0; i < 3; i++) {
 				students[i].display();
 			}
