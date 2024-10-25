@@ -1,6 +1,6 @@
-package java_basic;
+package javaOOP;
 
-public class Topic_14_OOP {
+public class Topic_2_OOP {
 	private String studentName;
 	private Float theoryPoint;
 	private Float practicePoint;
@@ -81,14 +81,14 @@ public class Topic_14_OOP {
 	}
 
 	public static void main(String[] args) {
-		Topic_14_OOP firstStudent = new Topic_14_OOP();
+		Topic_2_OOP firstStudent = new Topic_2_OOP();
 		firstStudent.setStudentID(00001);
 		firstStudent.setStudentName("Minh");
 		firstStudent.setTheoryPoint(7.0f);
 		firstStudent.setPracticePoint(8.5f);
 		firstStudent.showStudentInfor();
 
-		Topic_14_OOP secondStudent = new Topic_14_OOP();
+		Topic_2_OOP secondStudent = new Topic_2_OOP();
 		secondStudent.setStudentID(00002);
 		secondStudent.setStudentName("Viet");
 		secondStudent.setTheoryPoint(7.5f);

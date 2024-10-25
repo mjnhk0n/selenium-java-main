@@ -1,6 +1,6 @@
-package java_basic;
+package javaOOP;
 
-public class Topic_15_Variable_Property_Method {
+public class Topic_3_Variable_Property_Method {
 	/*
 	 * Property: combine with Getter/ Setter. Use for object like: person, computer,
 	 * car,...
@@ -38,7 +38,7 @@ public class Topic_15_Variable_Property_Method {
 	}
 
 	// Constructor
-	public Topic_15_Variable_Property_Method() {
+	public Topic_3_Variable_Property_Method() {
 		// Local variable: constructor
 		String studentName = "Automation FC";
 

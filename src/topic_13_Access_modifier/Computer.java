@@ -1,4 +1,4 @@
-package accessMod_1;
+package topic_13_Access_modifier;
 
 public class Computer {
 	// Property

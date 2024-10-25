@@ -1,6 +1,6 @@
-package accessMod_2;
+package topic_13_Access_Modifier_2;
 
-import accessMod_1.Computer;
+import topic_13_Access_modifier.Computer;
 
 public class PC extends Computer {
 	public void showSsdSize() {
