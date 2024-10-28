@@ -1,6 +1,7 @@
 package javaOOP;
 
 public class Topic_5_this {
+	// Only use in current class
 	// Use to refer to current class instance variable (if Global and Local variable
 	// have the same name)
 	// Can be used to invoke current class method (implicity)/ constructor
