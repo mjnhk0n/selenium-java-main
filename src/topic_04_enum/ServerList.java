@@ -1,4 +1,4 @@
-package topic_4_enum;
+package topic_04_enum;
 
 public enum ServerList {
 	DEV, TESTING, STAGING, LIVEOPS, PRODUCTION;
